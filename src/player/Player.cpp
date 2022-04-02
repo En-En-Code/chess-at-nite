@@ -29,8 +29,8 @@ void Player::set_board(Board* new_board) {
     board = new_board;
 }
 
-void Player::set_max_thinking_time(int seconds) {
-    max_thinking_time = seconds;
+void Player::set_max_thinking_time(int milliseconds) {
+    max_thinking_time = milliseconds;
 }
 
 void Player::set_max_search_depth(int depth) {

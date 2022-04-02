@@ -81,6 +81,7 @@ private:
     void computer_move();
     void remove_move();
     void undo_move();
+    void set_conv_thinking_time(vector<string> options);
 };
 
 #endif	/* _XBOARD_H */

@@ -26,7 +26,7 @@ public:
     virtual ~Player();
     void set_board(Board* board);
     virtual move get_move() = 0;
-    void set_max_thinking_time(int seconds);
+    void set_max_thinking_time(int milliseconds);
     void set_max_search_depth(int depth);
     void set_show_best_score(bool show);
     void set_show_thinking(bool show);

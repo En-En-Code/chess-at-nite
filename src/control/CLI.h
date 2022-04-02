@@ -58,6 +58,7 @@ public:
     CLI();
     virtual ~CLI();
     void start(int option=-1);
+    void set_max_thinking_time(int time);
 
 private:
     void init();
@@ -70,7 +71,7 @@ private:
     //when the only human player is black.. 
     bool inverse_board;
     bool both_human;
-    //time is in seconds
+    //time is in milliseconds
     int max_thinking_time;
     int max_search_depth;
     bool show_best_score;

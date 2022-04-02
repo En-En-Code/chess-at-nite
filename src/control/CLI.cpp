@@ -224,7 +224,7 @@ void CLI::print_messages() {
 
 void CLI::show_settings() {
     cout << "-----------------------------------\n";
-    cout << "   1. Set max thinking time (" << max_thinking_time << " sec)\n";
+    cout << "   1. Set max thinking time (" << max_thinking_time << " millseconds)\n";
     cout << "   2. Set max depth search (" << max_search_depth << " plies)\n";
 
     if (show_best_score) {
@@ -274,17 +274,17 @@ int CLI::get_user_option() {
 
 void CLI::set_max_time_from_user() {
     string temp;
-    int seconds = 0;
-    while (seconds == 0) {
-        cout << "Current time: " << max_thinking_time << " sec\n";
-        cout << "Enter thinking time (sec): ";
+    int milliseconds = 0;
+    while (milliseconds == 0) {
+        cout << "Current time: " << max_thinking_time << " milliseconds\n";
+        cout << "Enter thinking time (millisecs): ";
         cin >> temp;
-        seconds = atoi(temp.c_str());
-        if (seconds == 0) {
+        milliseconds = atoi(temp.c_str());
+        if (milliseconds == 0) {
             cerr << "The time should be greater than 0!\n";
         }
     }
-    max_thinking_time = seconds;
+    max_thinking_time = milliseconds;
 }
 
 void CLI::set_max_depth_from_user() {
