@@ -58,8 +58,8 @@ move ComputerPlayer::get_move() {
 
 move ComputerPlayer::search_pv() {
     int start_time = get_ms();
-    //time is in seconds
-    board->stop_time = start_time + max_thinking_time * 1000;
+    //time is in milliseconds
+    board->stop_time = start_time + max_thinking_time;
     board->time_exit = false;
 
     board->ply = 0;

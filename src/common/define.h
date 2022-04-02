@@ -18,7 +18,7 @@
 //version system changed. it's a date written in the inverse order, so it's
 //always pretty obvious how recent it is and let's face it.. it's an arbitary
 //number anyway...
-#define VERSION "10.2.23"
+#define VERSION "22 April Fools"
 
 
 //the DEBUG flag is automatically set if you're compiling with: make mode=debug
@@ -35,8 +35,8 @@
 #define UNICODE
 #endif
 
-//time in seconds
-#define DEFAULT_THINKING_TIME  16
+//time in milliseconds
+#define DEFAULT_THINKING_TIME  15990
 //this should be big.. because of the quiescence search.. depth is only
 //affecting the iterations.. and we are using this constant to define the pv
 #define MAX_SEARCH_DEPTH       20

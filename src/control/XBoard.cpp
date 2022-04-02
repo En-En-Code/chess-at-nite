@@ -60,7 +60,6 @@ bool XBoard::start() {
                 case XB_OTIM:
                 case XB_HARD:
                 case XB_COMPUTER:
-                case XB_LEVEL:
                 case XB_MOVE_NOW:
                     break;
                 case XB_NEW:
@@ -88,7 +87,7 @@ bool XBoard::start() {
                     cout << " san=1 "; //use algebraic notations for moves
                     cout << " setboard=1 "; //setting the board using FEN
                     cout << " ping=1 ";
-
+                    
                     //features off
                     cout << " time=0 ";
                     cout << " sigint=0 ";
@@ -113,6 +112,9 @@ bool XBoard::start() {
                     break;
                 case XB_FORCE:
                     force_mode = true;
+                    break;
+                case XB_LEVEL:
+                    set_conv_thinking_time(options);
                     break;
                 case XB_GO:
                     computer_move();
@@ -307,3 +309,26 @@ bool XBoard::legal_move(const string& input) {
     return false;
 }
 
+void XBoard::set_conv_thinking_time(vector<string> options) {
+    int moves_per_tc = atoi(options[1].c_str());
+    if (moves_per_tc <= 0) {
+        // This number is completely arbitrary, but without
+        // support for any other time commands, a safe guess
+        // on how long a game will last suffises (TODO: imp)
+        moves_per_tc = 300;
+    }
+    int secs_per_tc = 0;
+    size_t colon_loc = options[2].find(":");
+    if (colon_loc != string::npos) {
+        secs_per_tc = 60 * atoi(options[2].substr(0, colon_loc).c_str());
+        secs_per_tc += atoi(options[2].substr(colon_loc + 1, string::npos).c_str());
+    } else {
+        secs_per_tc = 60 * atoi(options[2].c_str());
+    }
+    
+    int increment = 0;
+    if (options.size() > 3) {
+    	increment = atoi(options[3].c_str());
+    }
+    player->set_max_thinking_time(1000 * (secs_per_tc / (double)moves_per_tc + increment) - 10);
+}
