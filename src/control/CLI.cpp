@@ -277,7 +277,7 @@ void CLI::set_max_time_from_user() {
     int milliseconds = 0;
     while (milliseconds == 0) {
         cout << "Current time: " << max_thinking_time << " milliseconds\n";
-        cout << "Enter thinking time (sec): ";
+        cout << "Enter thinking time (millisecs): ";
         cin >> temp;
         milliseconds = atoi(temp.c_str());
         if (milliseconds == 0) {
